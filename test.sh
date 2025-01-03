@@ -90,7 +90,7 @@ echo "Using AWS region: $REGION"
 
 # Use the AWS X-Ray SDK on the specified commit hash
 echo "Cloning the AWS X-Ray SDK repo locally..."
-git clone https://$XRAY_SDK_REPO
+git clone https://$XRAY_SDK_REPO || { echo "Failed to clone the AWS X-Ray SDK repo"; exit 1; }
 cd aws-xray-sdk-node
 if [ "$COMMIT_HASH" != "latest" ]; then
   git checkout $COMMIT_HASH
